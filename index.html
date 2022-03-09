@@ -1,15 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Greek gods</title>
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Bellybutton Biodiversity</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
-<body>
-    <div id="plot"></div>
-    <script src="data.js"></script>
-    <script src="plots.js"></script>
+<style>
+    .jumbotron {
+    background-image: url("https://cdn.pixabay.com/photo/2013/06/08/08/09/koli-bacteria-123081_960_720.jpg");
+    background-size: cover;
+    }
+    .glyphicon {
+    font-size: 20px;
+    }
+</style>
+<body style="background-color:gray;">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 jumbotron text-center">
+        <h1 style="background-color:gray; color: whitesmoke; font-family: Garamond">Belly Button Biodiversity Dashboard</h1>
+        <p style="background-color:gray; color:whitesmoke; font-family: Garamond">
+            Use the interactive charts below to explore the dataset. Please see the information buttons below each exhibit for help <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-2">
+        <div class="well" style="background-color:gray; color:whitesmoke; border-style:solid; border-color:white; border-width: medium">
+            <h5>Test Subject ID No.:</h5>
+            <!-- <select id="selDataset"></select> -->
+            <select id="selDataset" style="background-color:gray; color:whitesmoke; border-style:solid; border-color:white0275d8; border-width: medium" onchange="optionChanged(this.value)"></select>
+        </div>
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">Demographic Info</h3>
+          </div>
+          <div id="sample-metadata" class="panel-body" style="background-color:	gray; color:whitesmoke; border-style:solid; border-color:white"></div>
+        </div>
+        <div class="container" >
+            <a href="#" data-toggle="popover" title="User Instructions" data-content="Welcome! To start, please use the dropdown menu above to select your user ID number. Once selected, the site should update with your personal information, including the demographic info above.">
+                <span class="glyphicon glyphicon-info-sign" aria-hidden="true" style="color:whitesmoke"></span>
+            </a>
+        </div>
+      </div>
+      <div class="col-md-5">
+        <div id="bar"></div>
+        <div class="container">
+            <a href="#" data-toggle="popover" title="Top 10 Bacteria" data-content="The bar chart above includes the top 10 OTU bacteria types found in the navel culture you provided. Along with the OTU numbers, the bateria counts for each type are provided. Exact numbers can be viewed by hovering over each bar.">
+                <span class="glyphicon glyphicon-info-sign" aria-hidden="true" style="color:whitesmoke; left:75px;"></span>
+            </a>
+        </div>
+      </div>
+      <div class="col-md-5">
+        <div id="gauge"></div>
+        <div class="container">
+            <a href="#" data-toggle="popover" title="Washing Frequency" data-content="This chart provides an overview of the average number of times you wash your navel area each week based on the survey infomation provided. The frequency of washings can effect the count and variety of bacteria found.">
+                <span class="glyphicon glyphicon-info-sign" aria-hidden="true" style="color:whitesmoke; left:50px;"></span>
+            </a>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div id="bubble"></div>
+        <div class="container">
+            <a href="#" data-toggle="popover" title="Bacteria Bubble Chart" data-content="The bubble chart above does a great job displaying the count and variety of bacteria found in your navel culture. The x-axis represents the OTU number (note that the OTU number has no numerical significance) while the y-axis shows the total count for each OTU bacteria type. The size, or radius, of each point is based on the OTU type's percetnage of total bacteria found.">
+                <span class="glyphicon glyphicon-info-sign" aria-hidden="true" style="color:whitesmoke; left:138px;"></span>
+            </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="charts.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('[data-toggle="popover"]').popover();   
+        });
+    </script>
 </body>
+
 </html>

@@ -1,4 +1,4 @@
-// Sort the data array using the greekSearchResults value
+//Sort the data array using the greekSearchResults value
 data.sort(function(a, b) {
   return parseFloat(b.greekSearchResults) - parseFloat(a.greekSearchResults);
 });
@@ -35,3 +35,4 @@ var layout = {
 
 // Render the plot to the div tag with id "plot"
 Plotly.newPlot("plot", data, layout);
+// 
